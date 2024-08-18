@@ -5,22 +5,13 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
+Route::redirect('/', '/prototype/login');
+
+Route::prefix('prototype')->group(function(){
+    route::get('/login', function(){
+        return Inertia::render('Prototype/Login');
+    });
 });
-
-Route::get('admin', function(){
-    return 'Hi Admin';
-})->middleware('role:admin');
-
-Route::get('user', function(){
-    return 'Hi User';
-})->middleware('role:user');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
