@@ -1,14 +1,12 @@
-import Input from "@/Components/TextInput";
 import Label from "@/Components/InputLabel";
+import Input from "@/Components/TextInput";
 import Button from "@/Components/PrimaryButton";
 import { Link, Head } from "@inertiajs/react";
-//Link untuk href agar dapat pindah halaman
-//Head untuk meta informasi seperti judul halaman dan tag halaman lainnya
 
-export default function Login() {
+export default function Register() {
     return (
         <>
-            <Head title="Log in" />
+            <Head title="sign Up" />
             <div className="mx-auto max-w-screen min-h-screen bg-black text-white md:px-10 px-3">
                 <div className="fixed top-[-50px] hidden lg:block">
                     <img
@@ -22,7 +20,7 @@ export default function Login() {
                         <img src="/images/moonton-white.svg" alt="" />
                         <div className="my-[70px]">
                             <div className="font-semibold text-[26px] mb-3">
-                                Welcome Back
+                                Sign Up
                             </div>
                             <p className="text-base text-[#767676] leading-7">
                                 Explore our new movies and get <br />
@@ -33,14 +31,26 @@ export default function Login() {
                             <div className="flex flex-col gap-6">
                                 <div>
                                     <Label
+                                        forInput="fullname"
+                                        value="Full Name"
+                                    />
+                                    <Input
+                                        type="text"
+                                        name="fullname"
+                                        className="rounded-2xl bg-form-bg py-[13px] px-7 w-full focus:outline-alerange focus:outline-none"
+                                        placeholder="Your fullname..."
+                                    />
+                                </div>
+                                <div>
+                                    <Label
                                         forInput="email"
                                         value="Email Address"
                                     />
                                     <Input
                                         type="email"
                                         name="email"
-                                        className="rounded-2xl bg-form-bg py-[13px] px-7 w-full focus:outline-alerange focus:outline-none"
-                                        placeholder="Email Address"
+                                        placeholder="Your Email Address"
+                                        defaultValue=""
                                     />
                                 </div>
                                 <div>
@@ -48,37 +58,28 @@ export default function Login() {
                                         forInput="password"
                                         value="Password"
                                     />
-
-                                    <input
+                                    <Input
                                         type="password"
                                         name="password"
-                                        className="rounded-2xl bg-form-bg py-[13px] px-7 w-full focus:outline-alerange focus:outline-none"
-                                        placeholder="Password"
+                                        placeholder="Your Password"
+                                        defaultValue=""
                                     />
                                 </div>
                             </div>
-
                             <div className="grid space-y-[14px] mt-[30px]">
-                                <Button type="button" variant="primary">
+                                <Button>
                                     <span className="text-base font-semibold">
-                                        Start Watching
+                                        Sign Up
                                     </span>
                                 </Button>
 
-                                <Link href={route("prototype.register")}>
-                                    <Button
-                                        type="button"
-                                        variant="light-outline"
-                                    >
+                                <Link href={route("prototype.login")}>
+                                    <Button variant="light-outline">
                                         <span className="text-base text-white">
-                                            Create New Account
+                                            Sign In to My Account
                                         </span>
                                     </Button>
                                 </Link>
-                                {/* 
-                        <a href="sign_up.html" className="rounded-2xl border border-white py-[13px] text-center">
-                            
-                        </a> */}
                             </div>
                         </form>
                     </div>

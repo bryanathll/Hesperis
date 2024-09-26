@@ -7,10 +7,14 @@ use Inertia\Inertia;
 
 Route::redirect('/', '/prototype/login');
 
-Route::prefix('prototype')->group(function(){
+Route::prefix('prototype')->name('prototype.')->group(function(){
     route::get('/login', function(){
         return Inertia::render('Prototype/Login');
-    });
+    })->name('login');
+
+    route::get('/register', function(){
+        return Inertia::render('Prototype/Register');
+    })->name('register');
 });
 
 Route::get('/dashboard', function () {

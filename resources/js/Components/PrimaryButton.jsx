@@ -1,12 +1,34 @@
-export default function PrimaryButton({ className = '', disabled, children, ...props }) {
+import PropTypes from "prop-types"; 
+
+Button.PropTypes = {
+    type: PropTypes.oneOf(["button", "submit", "reset"]),
+    className: PropTypes.string,
+    variant: PropTypes.oneOf([
+        "primary",
+        "warning",
+        "danger",
+        "light-outline",
+        "white-outline"
+    ]),
+    processing: PropTypes.bool,
+    children: PropTypes.node
+
+};
+
+export default function Button({ 
+    className = '', 
+    disabled, 
+    children, 
+    processing,
+    variant = "primary", //menambahkan variant (untuk memberikan class dari (kita))
+    ...props
+     }) {
     return (
         <button
             {...props}
-            className={
-                `inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150 ${
-                    disabled && 'opacity-25'
-                } ` + className
-            }
+            className={`rounded-2xl py-[13px] w-full  text-center ${processing && "opacity-30"} btn-${variant} ${className} `} 
+            //maksud dari ${processing && "opacity-30"}: kalau button sedang proses opacity nya 30 atau (seperti) disable 
+            //btn-${variant} ${className}: implementasikan variant dengan memberi prefix button agar tidak tabrakan dengan yang lain desain yang lain  
             disabled={disabled}
         >
             {children}
